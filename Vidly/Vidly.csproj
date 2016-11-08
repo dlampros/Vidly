@@ -201,6 +201,26 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="DataContexts\IdentityDb.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201611072346544_InitialCreate.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201611072346544_InitialCreate.Designer.cs">
+      <DependentUpon>201611072346544_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\201611081405127_AddMembershipeType.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201611081405127_AddMembershipeType.Designer.cs">
+      <DependentUpon>201611081405127_AddMembershipeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
+    <Compile Include="DataContexts\VidlyDb.cs" />
+    <Compile Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.cs" />
+    <Compile Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.Designer.cs">
+      <DependentUpon>201611072348584_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\VidlyMigrations\201611081407086_AddMembershipeType.cs" />
+    <Compile Include="DataContexts\VidlyMigrations\201611081407086_AddMembershipeType.Designer.cs">
+      <DependentUpon>201611081407086_AddMembershipeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\VidlyMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,6 +228,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -301,6 +322,20 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201611072346544_InitialCreate.resx">
+      <DependentUpon>201611072346544_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201611081405127_AddMembershipeType.resx">
+      <DependentUpon>201611081405127_AddMembershipeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.resx">
+      <DependentUpon>201611072348584_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\VidlyMigrations\201611081407086_AddMembershipeType.resx">
+      <DependentUpon>201611081407086_AddMembershipeType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
