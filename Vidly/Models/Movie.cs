@@ -8,11 +8,22 @@ namespace Vidly.Models
 {
     public class Movie
     {
-        [Key]
         public int Id { get; set; }
-
         [Required]
         [StringLength(120)]
         public string Title { get; set; }
+        [Required]
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        public DateTime ReleaseDate { get; set; }
+        [Required]
+        [Display(Name = "Date Added")]
+        [DataType(DataType.Date)]
+        public DateTime AddedDate { get; set; }
+        [Required]
+        [Display(Name = "Number In Stock")]
+        public short NumberInStock { get; set; }
+
+        public virtual Genre Genre { get; set; }
     }
 }

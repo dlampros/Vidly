@@ -9,7 +9,6 @@ namespace Vidly.Models
 {
     public class Customer
     {
-        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
@@ -17,15 +16,18 @@ namespace Vidly.Models
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
+        [Display(Name = "Birthdate")]
+        [DataType(DataType.Date)]
+        public DateTime? Birthdate { get; set; }
         public bool IsSybscribedToNewsletter { get; set; }
-        
+
         [NotMapped]
         public string FullName
         {
             get { return FirstName + " " + LastName; }
         }
 
-        public byte MembershipTypeId { get; set; }
-        public MembershipType MembershipType { get; set; }
+        //public byte MembershipTypeId { get; set; }
+        public virtual MembershipType MembershipType { get; set; }
     }
 }

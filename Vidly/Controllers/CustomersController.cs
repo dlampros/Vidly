@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,10 +11,23 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private VidlyDb db;
+
+        public CustomersController()
+        {
+            db = new VidlyDb();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = db.Customers.ToList();
 
             return View(customers);
         }
@@ -22,22 +36,12 @@ namespace Vidly.Controllers
         [Route("Customers/Details/{id:int:min(1)}")]
         public ActionResult Details(int id)
         {
-            var customer = GetCustomers().FirstOrDefault(c => c.Id == id);
+            var customer = db.Customers.FirstOrDefault(c => c.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
 
             return View(customer);
-        }
-
-
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>()
-            {
-                new Customer() { Id = 1, FirstName = "John", LastName = "Smith" },
-                new Customer() { Id = 2, FirstName = "Mary", LastName = "Williams" }
-            };
         }
     }
 }
