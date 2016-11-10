@@ -34,7 +34,6 @@ namespace Vidly.Controllers
         }
 
         // GET: Customers/Details/id
-        [Route("Customers/Details/{id:int:min(1)}")]
         public ActionResult Details(int id)
         {
             var customer = db.Customers.FirstOrDefault(c => c.Id == id);
@@ -45,23 +44,54 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        // GET: Customers/New
         public ActionResult New()
         {
-            var customerFormViewModel = new CustomerFormViewModel
+            var viewModel = new CustomerFormViewModel
             {
-                MembershipTypes = db.MembershipType.ToList()
+                MembershipTypes = db.MembershipTypes.ToList()
             };
 
-            return View(customerFormViewModel);
+            return View(viewModel);
+        }
+
+        // GET: Customers/Edit/id
+        public ActionResult Edit(int id)
+        {
+            var customer = db.Customers.FirstOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = db.MembershipTypes.ToList()
+            };
+
+            return View("New", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            db.Customers.Add(customer);
+            if (customer.Id == 0)
+            {
+                db.Customers.Add(customer);
+            }
+            else
+            {
+                var dbCustomer = db.Customers.Single(c => c.Id == customer.Id);
+
+                dbCustomer.FirstName = customer.FirstName;
+                dbCustomer.LastName = customer.LastName;
+                dbCustomer.Birthdate = customer.Birthdate;
+                dbCustomer.MembershipTypeId = customer.MembershipTypeId;
+                dbCustomer.IsSybscribedToNewsletter = customer.IsSybscribedToNewsletter;
+            }
             db.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
         }
+
     }
 }

@@ -32,7 +32,6 @@ namespace Vidly.Controllers
         }
 
         // GET: Movies/Details/id
-        [Route("Movies/Details/{id:int:min(1)}")]
         public ActionResult Details(int id)
         {
             var movie = db.Movies.FirstOrDefault(m => m.Id == id);
@@ -41,6 +40,53 @@ namespace Vidly.Controllers
                 return HttpNotFound();
 
             return View(movie);
+        }
+
+        public ActionResult New()
+        {
+            var viewModel = new MovieFormViewModel
+            {
+                Genres = db.Genres.ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: Movies/Edit/id
+        public ActionResult Edit(int id)
+        {
+            var movie = db.Movies.FirstOrDefault(c => c.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = db.Genres.ToList()
+            };
+
+            return View("New", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                movie.AddedDate = DateTime.Now;
+                db.Movies.Add(movie);
+            }
+            else
+            {
+                var dbMovie = db.Movies.Single(m => m.Id == movie.Id);
+                dbMovie.Title = movie.Title;
+                dbMovie.ReleaseDate = movie.ReleaseDate;
+                dbMovie.GenreId = movie.GenreId;
+                dbMovie.NumberInStock = movie.NumberInStock;
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
         }
     }
 }

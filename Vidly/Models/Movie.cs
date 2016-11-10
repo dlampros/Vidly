@@ -11,6 +11,7 @@ namespace Vidly.Models
         public int Id { get; set; }
         [Required]
         [StringLength(120)]
+        [Display(Name = "Title")]
         public string Title { get; set; }
         [Required]
         [Display(Name = "Release Date")]
@@ -24,6 +25,8 @@ namespace Vidly.Models
         [Display(Name = "Number In Stock")]
         public short NumberInStock { get; set; }
 
+        [Display(Name = "Genre")]
+        public byte GenreId { get; set; }
         public virtual Genre Genre { get; set; }
     }
 }
