@@ -12,11 +12,13 @@ namespace Vidly.Models
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Display(Name = "Birthdate")]
+        [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
         public DateTime? Birthdate { get; set; }
         public bool IsSybscribedToNewsletter { get; set; }
@@ -27,7 +29,8 @@ namespace Vidly.Models
             get { return FirstName + " " + LastName; }
         }
 
-        //public byte MembershipTypeId { get; set; }
+        [Display(Name = "Membership Type")]
+        public byte MembershipTypeId { get; set; }
         public virtual MembershipType MembershipType { get; set; }
     }
 }
