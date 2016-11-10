@@ -24,13 +24,11 @@ namespace Vidly.Models
         public bool IsSybscribedToNewsletter { get; set; }
 
         [NotMapped]
-        public string FullName
-        {
-            get { return FirstName + " " + LastName; }
-        }
+        public string FullName { get { return FirstName + " " + LastName; } }
 
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
+
         public virtual MembershipType MembershipType { get; set; }
     }
 }
