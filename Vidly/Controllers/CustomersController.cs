@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +49,7 @@ namespace Vidly.Controllers
         {
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = db.MembershipTypes.ToList()
             };
 
@@ -72,8 +73,20 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = db.MembershipTypes.ToList()
+                };
+
+                return View("New", viewModel);
+            }
+
             if (customer.Id == 0)
             {
                 db.Customers.Add(customer);

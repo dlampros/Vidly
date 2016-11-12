@@ -9,24 +9,28 @@ namespace Vidly.Models
     public class Movie
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(120)]
+
         [Display(Name = "Title")]
+        [Required(ErrorMessage = "Please enter movie's title.")]
+        [StringLength(120, ErrorMessage = "Title can't be bigger than 50 characters.")]
         public string Title { get; set; }
-        [Required]
+
         [Display(Name = "Release Date")]
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d MMM yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Please enter movie's released date in the fromat dd MMM yyyy.")]
         public DateTime ReleaseDate { get; set; }
-        [Required]
+
         [Display(Name = "Date Added")]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please enter movie's date added in the fromat dd MMM yyyy.")]
         public DateTime AddedDate { get; set; }
-        [Required]
+
         [Display(Name = "Number In Stock")]
+        [Required(ErrorMessage = "Please enter number of movies in stock.")]
         public short NumberInStock { get; set; }
 
-        [Required]
+
         [Display(Name = "Genre")]
+        [Required(ErrorMessage = "Please select movie's genre.")]
         public byte GenreId { get; set; }
 
         public virtual Genre Genre { get; set; }

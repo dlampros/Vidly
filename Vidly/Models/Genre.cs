@@ -9,6 +9,7 @@ namespace Vidly.Models
     public class Genre
     {
         public byte Id { get; set; }
+
         [Required]
         [Display(Name = "Name")]
         [StringLength(15)]
