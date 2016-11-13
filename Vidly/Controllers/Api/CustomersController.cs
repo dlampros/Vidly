@@ -21,9 +21,9 @@ namespace Vidly.Controllers.Api
         }
 
         // GET /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return db.Customers.ToList().Select(MappingProfile.Mapper.Map<Customer, CustomerDto>);
+            return Ok(db.Customers.ToList().Select(MappingProfile.Mapper.Map<Customer, CustomerDto>));
         }
 
         // GET /api/customters/id
@@ -54,7 +54,7 @@ namespace Vidly.Controllers.Api
 
         // PUT /api/customers/id
         [HttpPut]
-        public void UpdateCustomer(int id, CustomerDto customer)
+        public void UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -63,8 +63,7 @@ namespace Vidly.Controllers.Api
             if (dbCustomer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            MappingProfile.Mapper.Map(customer, dbCustomer);
-
+            MappingProfile.Mapper.Map(customerDto, dbCustomer);
             db.SaveChanges();
         }
 
@@ -77,7 +76,6 @@ namespace Vidly.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             db.Customers.Remove(dbCustomer);
-
             db.SaveChanges();
         }
     }

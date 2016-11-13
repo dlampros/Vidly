@@ -17,6 +17,7 @@ namespace Vidly.App_Start
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Customer, CustomerDto>()
+                    .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dst => dst.FirstName, opt => opt.MapFrom(src => src.FirstName))
                     .ForMember(dst => dst.LastName, opt => opt.MapFrom(src => src.LastName))
                     .ForMember(dst => dst.Birthdate, opt => opt.MapFrom(src => src.Birthdate))
@@ -24,12 +25,30 @@ namespace Vidly.App_Start
                     .ForMember(dst => dst.IsSybscribedToNewsletter, opt => opt.MapFrom(src => src.IsSybscribedToNewsletter));
 
                 cfg.CreateMap<CustomerDto, Customer>()
+                    .ForMember(dst => dst.Id, opt => opt.Ignore())
                     .ForMember(dst => dst.FirstName, opt => opt.MapFrom(src => src.FirstName))
                     .ForMember(dst => dst.LastName, opt => opt.MapFrom(src => src.LastName))
                     .ForMember(dst => dst.Birthdate, opt => opt.MapFrom(src => src.Birthdate))
                     .ForMember(dst => dst.MembershipTypeId, opt => opt.MapFrom(src => src.MembershipTypeId))
                     .ForMember(dst => dst.MembershipType, opt => opt.Ignore())
                     .ForMember(dst => dst.IsSybscribedToNewsletter, opt => opt.MapFrom(src => src.IsSybscribedToNewsletter));
+
+                cfg.CreateMap<Movie, MovieDto>()
+                    .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dst => dst.Title, opt => opt.MapFrom(src => src.Title))
+                    .ForMember(dst => dst.ReleaseDate, opt => opt.MapFrom(src => src.ReleaseDate))
+                    .ForMember(dst => dst.NumberInStock, opt => opt.MapFrom(src => src.NumberInStock))
+                    .ForMember(dst => dst.GenreId, opt => opt.MapFrom(src => src.GenreId))
+                    .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(src => src.AddedDate));
+
+                cfg.CreateMap<MovieDto, Movie>()
+                    .ForMember(dst => dst.Id, opt => opt.Ignore())
+                    .ForMember(dst => dst.Title, opt => opt.MapFrom(src => src.Title))
+                    .ForMember(dst => dst.ReleaseDate, opt => opt.MapFrom(src => src.ReleaseDate))
+                    .ForMember(dst => dst.NumberInStock, opt => opt.MapFrom(src => src.NumberInStock))
+                    .ForMember(dst => dst.GenreId, opt => opt.MapFrom(src => src.GenreId))
+                    .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(src => src.AddedDate))
+                    .ForMember(dst => dst.Genre, opt => opt.Ignore());
             });
 
 
