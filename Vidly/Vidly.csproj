@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44399</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -237,6 +237,10 @@
     <Compile Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.Designer.cs">
       <DependentUpon>201611152140172_AddDrivingLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\201611152217056_AddPhone.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201611152217056_AddPhone.Designer.cs">
+      <DependentUpon>201611152217056_AddPhone.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\VidlyDb.cs" />
@@ -655,6 +659,9 @@
     <EmbeddedResource Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.resx">
       <DependentUpon>201611152140172_AddDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201611152217056_AddPhone.resx">
+      <DependentUpon>201611152217056_AddPhone.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.resx">
       <DependentUpon>201611072348584_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -707,7 +714,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59051</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59051/</IISUrl>
+          <IISUrl>https://localhost:44399/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
