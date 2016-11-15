@@ -26,5 +26,7 @@ namespace Vidly.Dtos
 
         [Required(ErrorMessage = "Please select movie's genre.")]
         public byte GenreId { get; set; }
+
+        public GenreDto Genre { get; set; }
     }
 }

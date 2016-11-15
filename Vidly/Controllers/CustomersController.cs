@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +28,6 @@ namespace Vidly.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            //var customers = db.Customers.ToList();
-
             return View();
         }
 
