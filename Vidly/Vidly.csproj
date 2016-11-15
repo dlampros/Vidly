@@ -234,6 +234,10 @@
     <Compile Include="DataContexts\IdentityMigrations\201611151247172_SeedUsers.Designer.cs">
       <DependentUpon>201611151247172_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.cs" />
+    <Compile Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.Designer.cs">
+      <DependentUpon>201611152140172_AddDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\IdentityMigrations\Configuration.cs" />
     <Compile Include="DataContexts\VidlyDb.cs" />
     <Compile Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.cs" />
@@ -647,6 +651,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\IdentityMigrations\201611151247172_SeedUsers.resx">
       <DependentUpon>201611151247172_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\IdentityMigrations\201611152140172_AddDrivingLicense.resx">
+      <DependentUpon>201611152140172_AddDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\VidlyMigrations\201611072348584_InitialCreate.resx">
       <DependentUpon>201611072348584_InitialCreate.cs</DependentUpon>
