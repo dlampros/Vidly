@@ -58,6 +58,14 @@ namespace Vidly.App_Start
                 cfg.CreateMap<Genre, GenreDto>()
                    .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id))
                    .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.Name));
+
+                //cfg.CreateMap<Rental, RentalDto>()
+                //   .ForMember(dst => dst.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
+                //   .ForMember(dst => dst.MovieId, opt => opt.MapFrom(src => src.MovieId));
+
+                //cfg.CreateMap<RentalDto, Rental>()
+                //   .ForMember(dst => dst.CustomerId, opt => opt.MapFrom(src => src.CustomerId))
+                //   .ForMember(dst => dst.MovieId, opt => opt.MapFrom(src => src.MovieId));
             });
 
 

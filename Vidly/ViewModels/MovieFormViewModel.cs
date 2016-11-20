@@ -25,7 +25,7 @@ namespace Vidly.ViewModels
 
         [Display(Name = "Number In Stock")]
         [Required(ErrorMessage = "Please enter number of movies in stock.")]
-        public short? NumberInStock { get; set; }
+        public byte? NumberInStock { get; set; }
 
         [Display(Name = "Genre")]
         [Required(ErrorMessage = "Please select movie's genre.")]

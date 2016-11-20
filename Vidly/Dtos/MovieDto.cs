@@ -22,7 +22,7 @@ namespace Vidly.Dtos
         public DateTime AddedDate { get; set; }
 
         [Required(ErrorMessage = "Please enter number of movies in stock.")]
-        public short NumberInStock { get; set; }
+        public byte NumberInStock { get; set; }
 
         [Required(ErrorMessage = "Please select movie's genre.")]
         public byte GenreId { get; set; }
