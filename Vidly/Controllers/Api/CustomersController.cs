@@ -21,9 +21,17 @@ namespace Vidly.Controllers.Api
         }
 
         // GET /api/customers
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            return Ok(db.Customers.ToList().Select(MappingProfile.Mapper.Map<Customer, CustomerDto>));
+            if (!string.IsNullOrWhiteSpace(query))
+                return Ok(db.Customers
+                            .Where(c => (c.FirstName + " " + c.LastName).Contains(query))
+                            .ToList()
+                            .Select(MappingProfile.Mapper.Map<Customer, CustomerDto>));
+
+            return Ok(db.Customers
+                        .ToList()
+                        .Select(MappingProfile.Mapper.Map<Customer, CustomerDto>));
         }
 
         // GET /api/customters/id

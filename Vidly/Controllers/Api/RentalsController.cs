@@ -17,25 +17,31 @@ namespace Vidly.Controllers.Api
             db = new VidlyDb();
         }
 
-        // GET /api/rental/id
-        //public IHttpActionResult Action(int Id)
-        //{
-        //    var rentals = db.Rentals.Where(r=>r.Id)
-
-        //    return;
-        //}
-
         // POST /api/rental
         [HttpPost]
         public IHttpActionResult CreateRental(RentalDto rentalDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            var customer = db.Customers.Single(c => c.Id == rentalDto.CustomerId);
+            var movies = db.Movies.Where(m => rentalDto.MovieIds.Contains(m.Id)).ToList();
 
-            db.Rentals.Add(MappingProfile.Mapper.Map<RentalDto, Rental>(rentalDto));
+            foreach (var movie in movies)
+            {
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available.");
+
+                movie.NumberAvailable--;
+
+                var rental = new Rental()
+                {
+                    Customer = customer,
+                    Movie = movie,
+                    DateRented = DateTime.Now
+                };
+                db.Rentals.Add(rental);
+            }
             db.SaveChanges();
 
-            return Created(new Uri(Request.RequestUri + "/" + rentalDto.CustomerId), rentalDto);
+            return Ok();
         }
     }
 }

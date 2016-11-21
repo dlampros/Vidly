@@ -18,6 +18,11 @@ namespace Vidly.Dtos
         [StringLength(50, ErrorMessage = "Last name can't be bigger than 50 characters.")]
         public string LastName { get; set; }
 
+        public string Name
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
         public DateTime? Birthdate { get; set; }
 
         [Required(ErrorMessage = "Please select membersip type.")]

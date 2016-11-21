@@ -43,15 +43,4 @@ else
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        $(function () {
-            $.validator.methods.date = function (value, element) {
-                Globalize.culture("el-GR");
-                // you can alternatively pass the culture to parseDate instead of
-                // setting the culture above, like so:
-                // parseDate(value, null, "en-AU")
-                return this.optional(element) || Globalize.parseDate(value) !== null;
-            }
-        });
-    </script>
 }

@@ -51,6 +51,7 @@ namespace Vidly.App_Start
                    .ForMember(dst => dst.Title, opt => opt.MapFrom(src => src.Title))
                    .ForMember(dst => dst.ReleaseDate, opt => opt.MapFrom(src => src.ReleaseDate))
                    .ForMember(dst => dst.NumberInStock, opt => opt.MapFrom(src => src.NumberInStock))
+                   .ForMember(dst => dst.NumberAvailable, opt => opt.Ignore())
                    .ForMember(dst => dst.GenreId, opt => opt.MapFrom(src => src.GenreId))
                    .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(src => src.AddedDate))
                    .ForMember(dst => dst.Genre, opt => opt.Ignore());
